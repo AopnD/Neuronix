@@ -13,7 +13,7 @@
 # and Biases
 
 ## here we have 4 neurons, resiving 3 inputs each, and returning a list of 4 new predictions from the output layer.
-inputs = [1.2, 2.3, 3.4]
+inputs = [1.2, 2.3, 3.4, 4.5]
 ## the number of weights needs to match the number of biases otherwise you have incomplete list.
 weights = [
     [0.7, -0.5, 1.25, 0.3],
@@ -22,7 +22,7 @@ weights = [
     [-0.14, 0.2, -0.9, 0.7]
 ]
 ## theoraticly you can also use only biases or only weights, however this way make things a whole lot easier to calculate and change.
-biases = [2, 13, 1.25, 4]
+biases = [2, 1.3, 1.25, 1]
 
 def get_output():
     if len(weights) != len(biases):
@@ -30,7 +30,7 @@ def get_output():
         return
     results = []
     for i in range(len(weights)):
-        weighted_sum = sum(inputs[j]*weights[i][j] for j in range(len(weights[i])))
+        weighted_sum = sum(inputs[j] * weights[i][j] for j in range(len(weights[i])))
         result = weighted_sum + biases[i]
         results.append(result)
 
