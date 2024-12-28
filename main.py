@@ -94,13 +94,43 @@ import numpy as np
 
 ## np.dot with weights as a matrix:
 # Explanation: This example shows matrix-vector multiplication using np.dot.
-inputs = [1.2, 2.3, 3.4, 4.5]
+# inputs = [1.2, 2.3, 3.4, 4.5]
+# weights = [
+#     [0.7, -0.5, 0.25, 0.3],
+#     [0.8, -0.6, 1.3, -0.2],
+#     [0.6, -0.4, 0.62, 0.5],
+#     [-0.14, 0.2, -0.9, 0.7]
+# ]
+# biases = [2, 1.3, 1.25, 1]
+# output = np.dot(weights, inputs) + biases
+# print(output)
+
+
+
+# inputs is now a batch of input vectors, represented as a matrix with the shape (3,4),
+# where each row corresponds to an input vector, and each row has 4 elements (floats).
+# this is essentially a "list of lists" (lol), with 3 lists inside and each containing 4 floats.
+
+# weights is a matrix of shape (3,4), where each row corresponds to the weights for one neuron.
+# to compute the dot product, we transpose weights into a shape of (4,3), so that
+# the second dimension of inputs matches the first dimension of weights (after transposition).
+
+#  **more detailed explanation of batches and their significance could be added here.
+
+
+
+inputs = [
+    [1.2, 2.3, 3.4, 4.5],
+    [2.2, 3.3, 4.4, 5.5],
+    [3.2, 4.8, 5.4, 6.5]
+]
 weights = [
     [0.7, -0.5, 0.25, 0.3],
     [0.8, -0.6, 1.3, -0.2],
     [0.6, -0.4, 0.62, 0.5],
-    [-0.14, 0.2, -0.9, 0.7]
 ]
 biases = [2, 1.3, 1.25, 1]
-output = np.dot(weights, inputs) + biases
-print(output)
+
+
+outputs = np.dot(inputs, np.array(weights).T) + biases
+print(outputs)
